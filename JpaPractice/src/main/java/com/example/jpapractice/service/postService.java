@@ -27,4 +27,12 @@ public class postService {
         return new postSelect(p);
     }
 
+    @Transactional
+    public Long update(Long id, postSave ps){
+        Posts p = postsRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("회원 정보가 없습니다 : "+id)
+        );
+        p.update(ps.getContent(),ps.getTitle());
+        return id;
+    }
 }

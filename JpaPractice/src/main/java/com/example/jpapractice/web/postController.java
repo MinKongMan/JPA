@@ -20,4 +20,9 @@ public class postController {
     public postSelect get(@PathVariable Long id){
         return postService.select(id);
     }
+
+    @PutMapping("/api/v1/put/{id}")
+    public Long update(@PathVariable Long id, @RequestBody postSave ps){
+        return postService.update(id, ps);
+    }
 }
